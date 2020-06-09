@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "prettier/react",
+        "prettier/flowtype"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": ["react"],
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "no-const-assign": "warn",
+        "no-this-before-super": "warn",
+        "no-undef": "warn",
+        "no-unreachable": "warn",
+        "no-unused-vars": "warn",
+        "constructor-super": "warn",
+        "valid-typeof": "warn",
+        "no-extra-semi": "warn",
+        "no-tabs": "off", // We want tabs in our file in other words cancel no, cancel off we get tabs is allowed
+        "indent": [0, "tab"],
+        "arrow-body-style": "off",
+        "react/jsx-indent": [0, "tab"], // 2, "tab"
+        "react/no-unescaped-entities": 0,
+        "no-console": 0,
+        "no-multi-spaces": "off"
+    }
+}
