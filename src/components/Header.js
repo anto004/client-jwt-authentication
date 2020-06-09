@@ -6,7 +6,7 @@ export default class Header extends Component {
 		return (
 			<div>
 				<Link to="/"> Redux Auth</Link>
-				<Link to="/"> Sign Up</Link>
+				<Link to="/signup"> Sign Up</Link>
 				<Link to="/"> Sign In</Link>
 				<Link to="/"> Sign Out</Link>
 				<Link to="/"> Feature</Link>
