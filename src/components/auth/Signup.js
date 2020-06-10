@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { signupThunk } from "../../actions";
 
 class Signup extends Component {
-	onSubmit(values) {
-		console.log("submit: ", values);
-	}
+	// eslint-disable-next-line
+	onSubmit = (formValues) => {
+		console.log("submit: ", formValues);
+		this.props.signup(formValues);
+	};
 
 	render() {
 		// handleSubmit is provided by redux-form
@@ -39,4 +44,16 @@ class Signup extends Component {
 	}
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		signup: (formValues) => dispatch(signupThunk(formValues)),
+	};
+};
+
+Signup = connect(null, mapDispatchToProps)(Signup);
 export default reduxForm({ form: "signup" })(Signup);
+// Apply multi higher components into one using compose
+//export default compose(
+//	connect(null, mapDispatchToProps),
+//	reduxForm({ form: "signup" })(Signup)
+//)(Signup);
