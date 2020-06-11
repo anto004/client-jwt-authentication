@@ -36,11 +36,18 @@ class Signup extends Component {
 						autoComplete="none"
 					/>
 				</fieldset>
+				<div>{this.props.errorMessage}</div>
 				<button type="submit">Submit</button>
 			</form>
 		);
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		errorMessage: state.auth.errorMessage,
+	};
+};
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -48,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-Signup = connect(null, mapDispatchToProps)(Signup);
+Signup = connect(mapStateToProps, mapDispatchToProps)(Signup);
 export default reduxForm({ form: "signup" })(Signup);
 
 // Apply multi higher components into one using compose

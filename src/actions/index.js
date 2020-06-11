@@ -1,10 +1,17 @@
 import axios from "axios";
-import { AUTH_USER } from "./types";
+import { AUTH_USER, AUTH_ERROR } from "./types";
 
 function signup(token) {
 	return {
 		type: AUTH_USER,
 		token,
+	};
+}
+
+function signupError(errorMessage) {
+	return {
+		type: AUTH_ERROR,
+		errorMessage,
 	};
 }
 
@@ -17,5 +24,8 @@ export const signupThunk = (formValues) => (dispatch) => {
 			const token = response.data.token;
 			dispatch(signup(token));
 		})
-		.catch((error) => console.log(error));
+		.catch(() => {
+			const errorMessage = "Email is in use";
+			dispatch(signupError(errorMessage));
+		});
 };
