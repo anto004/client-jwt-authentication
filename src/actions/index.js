@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR } from "./types";
+import { AUTH_USER, AUTH_ERROR, TOKEN_KEY } from "./types";
 
 function signup(token) {
 	return {
@@ -23,6 +23,10 @@ export const signupThunk = (formValues, callback) => (dispatch) => {
 		.then((response) => {
 			const token = response.data.token;
 			dispatch(signup(token));
+
+			// Persist Token
+			//Save token to Local Storage
+			localStorage.setItem(TOKEN_KEY, token);
 
 			callback();
 		})

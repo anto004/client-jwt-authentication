@@ -10,11 +10,14 @@ import Welcome from "./components/Welcome";
 import Signup from "./components/auth/Signup";
 import App from "./components/App";
 import Feature from "./components/Feature";
+import { TOKEN_KEY } from "./actions/types";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// Set Initial State with the token from
+// the browser's localStorage
 const store = createStore(
 	reducers,
-	{},
+	{ auth: { authenticated: localStorage.getItem(TOKEN_KEY) } },
 	composeEnhancers(applyMiddleware(reduxThunk))
 );
 
