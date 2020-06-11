@@ -6,7 +6,10 @@ import { signupThunk } from "../../actions";
 class Signup extends Component {
 	// eslint-disable-next-line
 	onSubmit = (formValues) => {
-		this.props.signup(formValues);
+		// Add a callback fn as an arg for redirect
+		this.props.signup(formValues, () => {
+			this.props.history.push("/feature");
+		});
 	};
 
 	render() {
@@ -51,7 +54,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signup: (formValues) => dispatch(signupThunk(formValues)),
+		signup: (formValues, callback) =>
+			dispatch(signupThunk(formValues, callback)),
 	};
 };
 

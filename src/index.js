@@ -9,6 +9,7 @@ import reducers from "./reducers";
 import Welcome from "./components/Welcome";
 import Signup from "./components/auth/Signup";
 import App from "./components/App";
+import Feature from "./components/Feature";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -24,6 +25,7 @@ ReactDom.render(
 				{/*Keep App component simple and show one thing*/}
 				<Route path="/" exact component={Welcome} />
 				<Route path="/signup" component={Signup} />
+				<Route path="/feature" component={Feature} />
 			</App>
 		</BrowserRouter>
 	</Provider>,
