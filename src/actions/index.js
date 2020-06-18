@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR, TOKEN_KEY } from "./types";
+import { AUTH_USER, AUTH_ERROR, TOKEN_KEY, SIGN_OUT } from "./types";
 
 function signup(token) {
 	return {
@@ -12,6 +12,17 @@ function signupError(errorMessage) {
 	return {
 		type: AUTH_ERROR,
 		errorMessage,
+	};
+}
+
+// TODO: Initialize localStorage value in the store with token or ""
+export function signout() {
+	// Remove token from localStorage
+	localStorage.removeItem(TOKEN_KEY);
+
+	return {
+		type: SIGN_OUT,
+		clearToken: "",
 	};
 }
 
