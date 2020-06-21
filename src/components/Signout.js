@@ -4,8 +4,11 @@ import { signout } from "../actions/index";
 
 function Greeting(props) {
 	const { isAuthenticated, isLoggedOut, signOutHandler } = props;
-
-	console.log(props);
+/**
+ * If user is not signed in mesg "Not signed in" is displayed
+ * If user is signed in button will be displayed
+ * If user logs out mesg "successful signed out" is displayed
+ */
 
 	if (!isAuthenticated && !isLoggedOut) {
 		return <h3>You are not signed in</h3>;
@@ -63,7 +66,6 @@ const dispatchStateToProps = (dispatch) => {
 /**
  * requireAuth HOC
  * If the user is not signed in, user will be redirected to home page
- * This covers the edge case for message See you next time
- * if the state is logged out but the user is not authorized the message won't be display as the user would be redirected
+ * 
  */
 export default connect(mapStateToProps, dispatchStateToProps)(Signout);

@@ -11,6 +11,7 @@ import Signup from "./components/auth/Signup";
 import App from "./components/App";
 import Feature from "./components/Feature";
 import Signout from "./components/Signout";
+import Signin from "./components/auth/Signin";
 import { TOKEN_KEY } from "./actions/types";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -33,6 +34,7 @@ ReactDom.render(
 				<Route path="/signup" component={Signup} />
 				<Route path="/feature" component={Feature} />
 				<Route path="/signout" component={Signout} />
+				<Route path="/signin" component={Signin} />
 			</App>
 		</BrowserRouter>
 	</Provider>,
