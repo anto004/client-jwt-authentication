@@ -8,6 +8,13 @@ function signup(token) {
 	};
 }
 
+function signin(token) {
+	return {
+		type: AUTH_USER,
+		token,
+	};
+}
+
 function signupError(errorMessage) {
 	return {
 		type: AUTH_ERROR,
@@ -15,6 +22,13 @@ function signupError(errorMessage) {
 	};
 }
 
+// TODO: Create HOC error messages
+function signinError(errorMessage) {
+	return {
+		type: AUTH_ERROR,
+		errorMessage,
+	};
+}
 // TODO: Initialize localStorage value in the store with token or ""
 export function signout() {
 	// Remove token from localStorage
@@ -44,5 +58,23 @@ export const signupThunk = (formValues, callback) => (dispatch) => {
 		.catch(() => {
 			const errorMessage = "Email is in use";
 			dispatch(signupError(errorMessage));
+		});
+};
+
+// TODO:
+// Server returns nothing when invalid password is entered
+export const signinThunk = (formValues, callback) => (dispatch) => {
+	axios
+		.post("http://localhost:3090/login", formValues)
+		.then((response) => {
+			console.log("response: ", response);
+			const { token } = response.data;
+			dispatch(signin(token));
+
+			callback();
+		})
+		.catch(() => {
+			const errorMessage = "Email or password is invalid";
+			dispatch(signinError(errorMessage));
 		});
 };
