@@ -19,7 +19,7 @@ class Signin extends Component {
 		const { handleSubmit, errorMessage } = this.props;
 		return (
 			<div>
-				Let's Sign you up
+				Let's Sign you in
 				<form onSubmit={handleSubmit(this.submit)}>
 					<div>
 						<label>Email</label>
